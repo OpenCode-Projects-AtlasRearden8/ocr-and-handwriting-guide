@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 8: Troubleshooting &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html">Scanning Tips</a>
+      <a href="tools.html">Free OCR Tools</a>
+      <a href="ai-cleanup.html">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html">Handwriting</a>
+      <a href="fixing-errors.html">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html" class="active">Troubleshooting</a>
+      <a href="cheat-sheet.html">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 8 of 9</p>
+  <div class="doc"><h1>Chapter 8: Troubleshooting — When OCR Betrays You</h1>
+<p>Everything breaks eventually, and OCR breaks in the same handful of ways
+every time. This is the ER intake table: find your symptom in the left
+column, apply the first fix that sounds doable, work down the list. Five
+minutes of targeted fixes solves more than five hours of re-uploading the
+same broken image and hoping.</p>
+<h2>The master symptom table</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Most likely cause</th>
+<th>Fixes, in order</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Output is gibberish / random symbols</td>
+<td>Wrong language setting, or image isn&rsquo;t really text (art/photo), or terrible contrast</td>
+<td>1. Check the tool&rsquo;s language setting. 2. Better light, flatter paper, fill the frame (Ch. 1). 3. Try a different tool (classic OCR ↔ AI vision swap).</td>
+</tr>
+<tr>
+<td>Everything readable but words scrambled in the wrong order</td>
+<td>Multi-column layout or a table confuse the reader</td>
+<td>Crop to <em>one column at a time</em> and OCR separately; or skip classic OCR — use AI vision with the table prompt (Ch. 3, Prompt 2).</td>
+</tr>
+<tr>
+<td>Missing chunks of text (lines vanish)</td>
+<td>Shadow band across page, page curve, or text outside the frame, or very low resolution</td>
+<td>1. Reshoot with even side-light, whole block in frame. 2. Crop tighter + higher contrast. 3. Two overlapping shots, stitch manually.</td>
+</tr>
+<tr>
+<td>Some characters fine, some systematically wrong</td>
+<td>Consistent confusions (0/O, 1/l, rn/m, cl/d)</td>
+<td>Consult the Ch. 6 table; run the 8-line checklist; use the AI proofread prompt with &ldquo;flag, don&rsquo;t fix&rdquo;.</td>
+</tr>
+<tr>
+<td>Numbers are consistently wrong</td>
+<td>Digits are the hardest prey</td>
+<td>Verify each number against the image; where it matters, retype digits manually. AI &ldquo;do not guess&rdquo; prompt helps but eyeballs win.</td>
+</tr>
+<tr>
+<td>Handwriting output is nonsense</td>
+<td>Classic OCR on cursive</td>
+<td>Use a free AI vision model instead (Ch. 5 ranking), with Prompt 4; crop to paragraphs; add context (&ldquo;this is a 1990s family journal&rdquo;).</td>
+</tr>
+<tr>
+<td>Long receipt bottom half missing</td>
+<td>Receipt curled out of frame or shadow</td>
+<td>Unroll (reverse-curl), shoot two overlapping halves, OCR separately (Ch. 1 &amp; 4).</td>
+</tr>
+<tr>
+<td>Faded thermal receipt text won&rsquo;t read</td>
+<td>Ink fade + low contrast</td>
+<td>1. Exposure-down/contrast-up in an editor. 2. Try scanning on both white and dark backgrounds. 3. Ask AI to reconstruct with <code>[guess]</code> marks only. 4. Accept partial: record what&rsquo;s readable.</td>
+</tr>
+<tr>
+<td>AI chat outputs a summary instead of a transcript</td>
+<td>Missing faithful-language in prompt</td>
+<td>Re-send with &ldquo;Output ONLY the transcription, no summary; keep exact wording&rdquo; (Ch. 3 Prompt 4).</td>
+</tr>
+<tr>
+<td>Text output has weird boxes/garbage chars (�, mojibake)</td>
+<td>Character-encoding mismatch on save/open</td>
+<td>Save/open as UTF-8 (most editors: File → Save with encoding → UTF-8).</td>
+</tr>
+<tr>
+<td>Two identical overlapping paragraphs</td>
+<td>Stitching artifact from overlapped shots</td>
+<td>Ask AI: &ldquo;Keep only the first occurrence of repeated sentences&rdquo; (Ch. 6).</td>
+</tr>
+<tr>
+<td>Whole file won&rsquo;t open in your editor</td>
+<td>Wrong extension or binary</td>
+<td>Check extension; if it&rsquo;s .docx or .pdf when you wanted text, re-extract (Ch. 2 tools).</td>
+</tr>
+</tbody>
+</table>
+<h2>The generic five-minute reset (works more often than it should)</h2>
+<p>When nothing above obviously fits, this sequence resets almost any OCR
+session to working order:</p>
+<pre><code class="language-text">1. Close the tool/chat; reopen fresh (clears stuck context).
+2. Reshot the image: flat, side-lit, whole frame, tap-to-focus (Ch. 1).
+3. Different tool (if classic OCR failed → try AI vision; if AI failed →
+   try phone on-device Live Text/Lens).
+4. Smaller crop: feed one paragraph, not the page.
+5. Re-add the faithful prompt, word for word.
+</code></pre>
+<p>Between steps 2 and 5, you&rsquo;ve changed every variable that <em>can</em> matter. One
+of them will be the culprit.</p>
+<h2>&lsquo;It works for everything except this one page&rsquo;</h2>
+<p>That one page is probably: glossy (menu), thermal (receipt), handwritten in
+a system only the author knows, or the ink/paper has aged oddly. That&rsquo;s not
+a bug — it&rsquo;s the hard end of the difficulty curve. Options:</p>
+<ul>
+<li><strong>Manual rescue</strong> — retype the important parts by hand. For one precious
+  page, ten minutes of typing beats an hour of failed automation.</li>
+<li><strong>Crowd the frame</strong> — physically closer camera + tighter crops per line;
+  resolution-per-letter is usually the missing ingredient.</li>
+<li><strong>Time-travel test</strong> — take the photo at a different hour: daylight angle
+  changes contrast dramatically; morning window light has saved many
+  &lsquo;unreadable&rsquo; pages.</li>
+</ul>
+<h2>When the AI chat hits its image-upload limit (free tiers do this)</h2>
+<p>Rotate tools: Gemini → Copilot → ChatGPT (all free tiers accept images).
+Or wait for the limit to reset (usually hourly/daily). Or use the phone
+on-device tools for that session. Batch limits are the main reason
+not to <em>depend</em> on one specific chat tool.</p>
+<h2>Prevention &gt; cure (what the pros actually do)</h2>
+<p>The chapters you&rsquo;ve read front-load the prevention; here&rsquo;s the compressed
+version of <em>why</em>:</p>
+<pre><code class="language-text">- Shoot flat, side-lit, tap-to-focus   → prevents 70% of all failures
+- Uncurl receipts before shooting      → receipt failures mostly vanish
+- Use AI vision for handwriting/columns → right tool for the input type
+- Faithful-prompt with [illegible]     → honest gaps, no invented text
+- Keep source images with transcripts  → every future dispute gets settled
+</code></pre>
+<p>Your <code>ocr-fix-list.md</code> from Chapter 6 grows more valuable every month:
+as it learns <em>your</em> paper&rsquo;s quirks, proofreading stops being hunting and
+starts being checking.</p>
+<h2>When to stop troubleshooting and start over</h2>
+<p>The counter-intuitive truth: ~80% of OCR failures are fixed faster by
+re-shooting the photo than by any amount of cleverness afterward. If two fix
+attempts fail and the source image was taken in a hurry — just take a better
+photo. The photo is the root of the pipeline; fixing downstream of a bad
+root is wasted effort.</p>
+<hr />
+<p>One chapter left: the pocket cheat sheet. Print it or save it to your phone
+— it&rsquo;s everything above in half a page.</p>
+  </div>
+  <div class="pager">
+      <a href="filing.html">&larr; Previous</a>
+      <a href="cheat-sheet.html">Next &rarr;</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>

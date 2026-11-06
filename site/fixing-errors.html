@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 6: Fixing Errors &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html">Scanning Tips</a>
+      <a href="tools.html">Free OCR Tools</a>
+      <a href="ai-cleanup.html">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html">Handwriting</a>
+      <a href="fixing-errors.html" class="active">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+      <a href="cheat-sheet.html">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 6 of 9</p>
+  <div class="doc"><h1>Chapter 6: Fixing OCR Errors — The Field Guide</h1>
+<p>Even after the AI cleanup pass, transcripts have <em>tells</em> — recurring error
+patterns you can spot and fix at a glance. This chapter trains the
+pattern-recognition (yours, not the AI&rsquo;s) so a quick skim catches 95% of
+errors, plus a checklist-driven pass for when accuracy really matters.</p>
+<h2>The classic OCR confusions (memorize five, fix most)</h2>
+<table>
+<thead>
+<tr>
+<th>OCR reads</th>
+<th>Should be</th>
+<th>Why</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code> (zero)</td>
+<td><code>O</code> (letter) / vice versa</td>
+<td>identical shapes</td>
+<td><code>B0STON</code> → <code>BOSTON</code></td>
+</tr>
+<tr>
+<td><code>l</code> / <code>1</code> / <code>I</code> / <code>\|</code></td>
+<td>each other</td>
+<td>identical shapes</td>
+<td><code>1mportant</code> → <code>Important</code></td>
+</tr>
+<tr>
+<td><code>rn</code></td>
+<td><code>m</code> (and reverse)</td>
+<td>ligature-like merge</td>
+<td><code>modeIn</code> → <code>modern</code>, <code>damged</code>→<code>damaged</code><em>(check!)</em></td>
+</tr>
+<tr>
+<td><code>cl</code></td>
+<td><code>d</code></td>
+<td>pair-shape merge</td>
+<td><code>cIoud</code> → <code>cloud</code></td>
+</tr>
+<tr>
+<td><code>5</code> / <code>S</code>, <code>8</code> / <code>B</code>, <code>6</code> / <code>b</code></td>
+<td>each other</td>
+<td>project-thin shapes</td>
+<td><code>55c</code> → <code>SSC</code>? <em>check context</em></td>
+</tr>
+<tr>
+<td><code>é</code> <code>e</code> accents dropped or scrambled</td>
+<td>accented originals</td>
+<td>engine charset limits</td>
+<td><code>cafe</code> → <code>café</code></td>
+</tr>
+<tr>
+<td>straight quotes <code>'</code> <code>"</code></td>
+<td>curly <code>’</code> <code>“”</code></td>
+<td>binary keyboard set</td>
+<td><code>don</code>t<code>→</code>don’t`</td>
+</tr>
+<tr>
+<td>hyphen <code>-</code></td>
+<td>en/em dash – —</td>
+<td>thin-vs-longer stroke</td>
+<td><code>10-12 years</code> → <code>10–12 years</code></td>
+</tr>
+</tbody>
+</table>
+<p>The moment of recognition: when reading your transcript, if a word <em>looks</em>
+almost-write, run that 5-second shape-substitution check. Nine times out of
+ten that&rsquo;s an OCR miss, not a typo.</p>
+<h2>Confusion-near-hits worth double-checking (words these substitutions can co-conspire to produce)</h2>
+<p><code>modern</code> ↔ <code>modeIn</code> — <code>cloud</code> ↔ <code>cIoud</code> — <code>important</code> ↔ <code>import ant</code> (split) —
+<code>together</code> ↔ <code>t0gether</code> — <code>burn</code>/<code>6urn</code> — <code>clay</code>/<code>dIay</code> (rare but real).</p>
+<h2>The eight-line pre-save checklist</h2>
+<p>Before saving any cleaned transcript, run your eyes down it once with these in
+mind (about a minute for a typical page):</p>
+<pre><code class="language-text">1. First and last lines of every &quot;paragraph&quot; — line-break misplacement lives here.
+2. Every number and date — shapes like 0/8/O/B, 1/l, 5/6 — verify against source if it matters.
+3. Every proper name (people, places, brands) — the most confident-looking errors.
+4. Every dollar sign, percent, and phone number — highest impact if wrong.
+5. Capital letters at odd moments (mid-word) — leftover column/heading artifacts.
+6. Two-letter &quot;words&quot; in the middle of sentences — fragments from a bad line-break.
+7. Repeated phrases (the same sentence twice) — stitching/seam artifacts from two partial scans.
+8. Markdown bullets/tables where prose should be — imbalance from the formatting pass.
+</code></pre>
+<h2>An AI proofread prompt (with permission to flag, not fix blindly)</h2>
+<p>When you want a second set of <em>digital</em> eyes on the final text:</p>
+<pre><code class="language-text">Below is a cleaned transcript from OCR, followed by key context: it's a
+(1980s letter/notebook page/receipt). Scan it as a proofreader and flag —
+do not silently fix — anything that looks like a residual OCR error: shape
+confusions (0/O, 1/l, rn/m, cl/d), broken words, impossible spellings,
+or wrong-looking numbers. List each with line reference and your suggested
+correction marked as &quot;suggestion&quot; only. If the text looks clean, say so.
+
+TRANSCRIPT:
+(paste here)
+</code></pre>
+<p>&ldquo;Flag, don&rsquo;t fix&rdquo; is the magic phrase — without it, the AI enthusiastically
+rewrites stylistic quirks that were actually correct on the page.</p>
+<h2>Accuracy protocol (when it <em>really</em> has to be right)</h2>
+<p>If the transcript&rsquo;s purpose is something where an error carries real cost —
+you&rsquo;re quoting a document, recording an amount, publishing an excerpt — run
+this two-tier protocol:</p>
+<pre><code class="language-text">PASS 1: AI cleanup (Chapter 3 prompts, faithful mode).
+PASS 2: The 8-line checklist above, read against the source image side by side.
+PASS 3: AI proofread with &quot;flag, don't fix&quot;.
+PASS 4 (precious documents only): a fresh second image upload to a
+        DIFFERENT chat/tool transcribed independently, then compare the two
+        transcripts — differences mark exactly the lines worth your eyeballs.
+</code></pre>
+<p>Four passes sounds heavy; in practice passes 2–4 take minutes and they&rsquo;re
+only for the rare documents that matter that much. For everyday notes,
+passes 1–2 are plenty.</p>
+<h2>The 90%-there trick: incremental follow-up questions</h2>
+<p>Don&rsquo;t restart the whole conversation when a cleanup is 90% right. Follow-up
+prompts that work great in the SAME chat (with original context present):</p>
+<pre><code class="language-text">&quot;Keep same rules: original line breaks must be preserved exactly.&quot;
+
+&quot;Paragraph 3 has table-like content that got flattened — rebuild it as a
+Markdown table using only the values present in the OCR.&quot;
+
+&quot;There's a repeated sentence around the middle. It's likely a stitching
+artifact from two overlapping scans. Identify repeated sentences and keep
+only the first.&quot;
+
+&quot;Line 7 of the transcription is 'Sandy sent the cIoud photos' — I believe
+'cIoud' is 'cloud'. Apply that understanding to similar errors elsewhere.&quot;
+
+&quot;We flagged [unreadable] in three spots. Here's extra context: (tell it the
+topic/time/place/people). Retry just those three.&quot;
+</code></pre>
+<p>Iterating in-place — the AI seeing its previous attempt plus your pinpointed
+fixes — is dramatically faster than re-uploading from scratch.</p>
+<h2>When <em>formatted</em> cleanup goes wrong</h2>
+<p>Occasionally a Markdown-formatting pass (Prompt 2, Chapter 3) mangles things
+it shouldn&rsquo;t have touched. Two recovery moves:</p>
+<ol>
+<li>&ldquo;Undo the table — output that section as plain lines, exactly as the OCR
+   had them.&rdquo;</li>
+<li>&ldquo;Show me the transcript with NO formatting changes at all, only the
+   character corrections.&rdquo; (Then format manually; sometimes the table-like
+   section just isn&rsquo;t table material.)</li>
+</ol>
+<h2>habits that pay off long-term</h2>
+<ul>
+<li><strong>Build your own growing &ldquo;confusion list&rdquo;</strong> in a file (e.g.
+  <code>ocr-fix-list.md</code>): every recurring error your own documents produce,
+  with its correction. Within a month yours will contain a personal hotspot
+  list (maybe your scanner consistently misreads your a&rsquo;s as o&rsquo;s at low
+  contrast). Preempt-fixing from this list before saving new transcripts
+  turns a 15-minute proofread into a 5-minute one.</li>
+<li><strong>Keep the source images next to the transcripts</strong> (Chapter 7 wiring).
+  Disputes between &ldquo;what the transcript says&rdquo; and &ldquo;what the page says&rdquo; are
+  always settled by the image — which is only possible if you kept it.</li>
+</ul>
+<hr />
+<p>Next: filing everything so future-you finds it with one search.</p>
+  </div>
+  <div class="pager">
+      <a href="handwriting.html">&larr; Previous</a>
+      <a href="filing.html">Next &rarr;</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>

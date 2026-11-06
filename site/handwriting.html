@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 5: Handwriting &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html">Scanning Tips</a>
+      <a href="tools.html">Free OCR Tools</a>
+      <a href="ai-cleanup.html">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html" class="active">Handwriting</a>
+      <a href="fixing-errors.html">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+      <a href="cheat-sheet.html">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 5 of 9</p>
+  <div class="doc"><h1>Chapter 5: Handwritten Notes — The Honest Guide</h1>
+<p>Handwriting is the hard mode of OCR. Modern tools are <em>shockingly</em> good at
+neat-to-average handwriting — and honestly bad at fast scrawl, cramped
+journals, and great-aunt Edna&rsquo;s fountain-pen loops. This chapter gives you
+realistic expectations, the tools that actually help, and tricks for the
+stubborn pages.</p>
+<h2>First: calibrate your expectations</h2>
+<p>Rough accuracy landscape (our experience; your mileage will vary):</p>
+<pre><code class="language-text">Neat print (a teacher's hand)      → near-perfect with any modern tool
+Average cursive (normal writing)    → 90%+ with a good AI vision model
+Fast personal shorthand             → 70%+, fragmentary, needs you in the loop
+Historical/fountain pen/diary       → 50–80%, often needs page-by-page effort
+Prescription-style scribbles :)     → don't; retype the important parts
+</code></pre>
+<p>Two mindset rules that will save you time:</p>
+<ol>
+<li><strong>Modern AI is better at handwriting than classic OCR engines.</strong> Tesseract
+   and friends were built for printed character shapes; a free AI <em>vision</em>
+   model was trained on oceans of human writing. For handwriting, skip the
+   classic engines and go straight to the AI chat (with Prompt 4 from
+   Chapter 3).</li>
+<li><strong>You are part of the pipeline, and that&rsquo;s fine.</strong> For anything precious
+   or scrawled, plan on AI-draft + you-correcting. That&rsquo;s not a failure of
+   the system; it&rsquo;s the fastest possible route to a usable transcript.</li>
+</ol>
+<h2>The tool ranking for handwriting</h2>
+<ol>
+<li><strong>Free AI chat with image upload</strong> (Gemini/Copilot/ChatGPT free tiers) —
+   the general-purpose winner for handwriting. Feed the image with <strong>Prompt 4</strong>:
+   <code>text
+   Transcribe the handwriting in this image. Keep the person's own spelling,
+   punctuation, and line breaks as close as possible — do not "correct" them.
+   If a word is truly unreadable, write [unreadable]. Do not summarize.
+   Output only the transcription.</code></li>
+<li><strong>Phone on-device tools</strong> (Live Text, Lens) — surprisingly decent on
+   <em>print-style</em> handwriting; worth a free try since it&rsquo;s instant and local.
+   Falters on cursive.</li>
+<li><strong>Educational note apps like OneNote</strong> (Insert picture → <em>Copy Text from
+   Picture</em>) — the cloud engine reads handwriting reasonably when print-y.</li>
+<li><strong>Classic OCR (Tesseract etc.)</strong> — printed text only. On cursive it
+   produces confetti. Skip for handwriting.</li>
+<li><strong>Microsoft OneNote&rsquo;s dedicated &ldquo;ink to text&rdquo;</strong> — only works on notes
+   <em>written in the app</em> with a stylus, not on photos of paper. A common
+   misunderstanding, so no, it can&rsquo;t transcribe your already-written pages.</li>
+</ol>
+<h2>Photographing handwriting (differences from chapter 1)</h2>
+<p>Everything from Chapter 1 applies, plus three handwriting-specific tips:</p>
+<ul>
+<li><strong>Margins matter more.</strong> Handwriting drifts up and down the page; make
+  sure the whole text block is inside the frame with room around it, or the
+  last line will get cropped and misread silently.</li>
+<li><strong>Contrast is your friend.</strong> Pencil on lined paper is low-contrast. Good
+  even light (window, side-lit) matters double.</li>
+<li><strong>One page at a time.</strong> Don&rsquo;t try to shoot a two-page spread; the spines&rsquo;
+  curve and angled text treats OCR badly.</li>
+</ul>
+<h2>The repeatable transcription workflow (AI + you)</h2>
+<pre><code class="language-text">1. Photograph the page well (above).
+2. Upload to a free AI chat with Prompt 4.
+3. Read the AI transcript next to the image; fix obvious errors in 1 pass.
+4. Save with a good filename: 2026-03-notebook-page-12.md
+</code></pre>
+<p>For multi-page notebooks, keep the SAME chat open and go page by page — the
+AI carries context, and &ldquo;now page 2, keep the same rules&rdquo; usually works
+beautifully. Add: &ldquo;Same transcription rules as before.&rdquo;</p>
+<h2>When the AI keeps failing at a page</h2>
+<p>Escalate in this order — each step usually cracks a page the previous one
+couldn&rsquo;t:</p>
+<ol>
+<li><strong>Crop tighter.</strong> Feed only the hard paragraph, not the whole page. Fewer
+   distractions, more resolution per letter.</li>
+<li><strong>Upscale/boost the image.</strong> Any phone editor: increase contrast, darken
+   slightly. Faded graphite LOVES this.</li>
+<li><strong>Tell it the topic.</strong> &ldquo;This is 1980s family correspondence mentioning
+   Aunt June and the farm in Ohio&rdquo; — context turns near-miss letters into
+   hits. AI reads <em>in context</em> wonderfully.</li>
+<li><strong>Ask it to list its uncertainty.</strong> &ldquo;Transcribe, then list line numbers
+   you&rsquo;re unsure about&rdquo; — you jump straight to those lines instead of
+   proofreading everything.</li>
+<li><strong>Chunk by line.</strong> For a truly brutal paragraph, ask: transcribe <em>line 3
+   only</em>. Resolve line by line.</li>
+<li><strong>Accept a human-assisted result.</strong> For the final stubborn 10%, type
+   those lines yourself directly from the page. Faster than fighting for an
+   hour, and you&rsquo;re done.</li>
+</ol>
+<h2>Preserving meaning, not just letters</h2>
+<p>When transcribing <em>someone else&rsquo;s</em> handwriting (journals, letters), a few
+golden rules:</p>
+<ul>
+<li><strong>Preserve their spelling</strong> (Prompt 4&rsquo;s &ldquo;do not correct&rdquo; line). &ldquo;Recieved&rdquo;
+  stays &ldquo;recieved.&rdquo; It&rsquo;s part of the record.</li>
+<li><strong>Keep <code>[unreadable]</code> markers honest.</strong> A transcription with two honest
+  gaps beats one with two invented words pretending to be history.</li>
+<li><strong>Record the context as a tiny header note</strong> in your file:
+  <code>text
+  Transcribed 2026-11-06 from letter postmarked 1987-04-12.
+  Writer: [relation]. Entirely handwritten, ballpoint. 4 [unreadable] marks.</code>
+  Future-you (or a relative) will thank present-you for the two lines of
+  provenance. <em>(If you&rsquo;re archiving family photographs themselves, that&rsquo;s
+  the separate Photo Digitizing Guide.)</em></li>
+</ul>
+<h2>A special case: YOUR OWN notes</h2>
+<p>Self-transcription has a cheat code: <strong>you remember what you meant.</strong> Lean on
+that.</p>
+<ul>
+<li>Use Prompt 4 as a rough draft, then rewrite the file into <em>clean</em> notes in
+  your own words (a summarizing pass — Prompt 5 from Chapter 3 works well).
+  The goal typically isn&rsquo;t a faithful artifact but <em>usable knowledge</em>.</li>
+<li>Conversely, from time to time, transcribe one page <em>faithfully</em>. Reviewing
+  your own shorthand from three months ago is a free memory upgrade; the
+  transcript plus the image is a great pair to keep together.</li>
+</ul>
+<h2>Limits worth knowing</h2>
+<ul>
+<li><strong>Numbers are still risky.</strong> Handwritten numerals plus OCR misread worse
+  than letters; verify any number that matters (dates, amounts).</li>
+<li><strong>Mixed handwriting + print (forms)</strong> — transit one region at a time:
+  &ldquo;transcribe the handwritten parts only&rdquo; avoids the AI hallucinating
+  neatly typed answers into printed fields.</li>
+<li><strong>Highly diagrammatic pages</strong> (sketches with labels) — transcribe labels
+  (&ldquo;sketch of garden plan; labels: &lsquo;tomatoes&rsquo;, &lsquo;fence&rsquo;, &lsquo;compost&rsquo;&rdquo;) rather
+  than asking AI to reconstruct the drawing.</li>
+</ul>
+<hr />
+<p>Handwriting done. Next: Chapter 6, the classic OCR error patterns and a fast proofreading
+checklist — including a growing &ldquo;confusion list&rdquo; file that kills 90% of
+recurring errors in one pass.</p>
+  </div>
+  <div class="pager">
+      <a href="receipts.html">&larr; Previous</a>
+      <a href="fixing-errors.html">Next &rarr;</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>

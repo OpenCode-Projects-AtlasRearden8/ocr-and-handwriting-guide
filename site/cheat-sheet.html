@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 9: Cheat Sheet &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html">Scanning Tips</a>
+      <a href="tools.html">Free OCR Tools</a>
+      <a href="ai-cleanup.html">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html">Handwriting</a>
+      <a href="fixing-errors.html">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+      <a href="cheat-sheet.html" class="active">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 9 of 9</p>
+  <div class="doc"><h1>Chapter 9: The Cheat Sheet (Everything in Half a Page)</h1>
+<p>The whole system, condensed. Save this to your phone or print it — it&rsquo;s the
+part you&rsquo;ll actually reach for.</p>
+<h2>THE PHOTO RULES (before OCR exists)</h2>
+<pre><code class="language-text">1. PAPER FLAT on a table; phone directly above, parallel.
+2. WHOLE PAGE in frame + margin; small paper → get closer.
+3. WINDOW LIGHT from the SIDE; no flash; watch hand/phone shadows.
+4. TAP TO FOCUS on the text; steady; exhale; shoot.
+5. RECEIPTS: uncurl first (reverse-roll). Too long? Two overlapping shots.
+</code></pre>
+<h2>THE TOOL PICK (3 seconds)</h2>
+<pre><code class="language-text">Everyday text, in my hand......  iPhone Live Text / Android Lens
+Keeping batches of documents... Notes &quot;Scan Documents&quot; / Drive Scan
+On my computer................. Snipping/PowerToys (Win), Live Text (Mac),
+                                Google Docs OCR (cloud), Tesseract (local)
+Sensitive paper................ on-device tools ONLY
+Handwriting / messy layout..... free AI chat + Prompt 4 (below)
+</code></pre>
+<h2>THE PROMPTS (copy, paste, keep)</h2>
+<p><strong>Faithful cleanup:</strong></p>
+<pre><code class="language-text">Below is raw OCR output. Clean it, fixing obvious OCR errors only.
+DO NOT add, remove, reorder, or reword content. Keep paragraph breaks.
+Mark unreadable text [illegible]. Output only the cleaned text.
+</code></pre>
+<p><strong>Handwriting transcription:</strong></p>
+<pre><code class="language-text">Transcribe the handwriting. Keep the writer's own spelling and line
+breaks — do not correct them. Unreadable = [unreadable]. Do not
+summarize. Output only the transcription.
+</code></pre>
+<p><strong>Receipts to table:</strong> <em>(Chapter 3, Prompt 3 — Date | Merchant | Items |
+Total | Tax | Pay.)</em></p>
+<p><strong>Second-pass proofread (flag, don&rsquo;t fix):</strong> <em>(Chapter 6 prompt.)</em></p>
+<h2>THE 8-LINE PROOFREAD CHECKLIST</h2>
+<pre><code class="language-text">1 First &amp; last lines of each paragraph    5 Mid-word CAPITALS
+2 Every number and date                   6 Two-letter 'words' mid-sentence
+3 Every proper name                       7 Duplicated sentences (stitch seams)
+4 Every $, %, phone number                8 Markdown where prose should be
+</code></pre>
+<h2>THE FILING RULES</h2>
+<pre><code class="language-text">One root:  Documents/Scans/YYYY/
+Name:      date-first + who-what → 2026-04-12-aunt-june-letter.md
+Header:    4 lines — subject / tags / source / transcribed date
+Search:    filenames first; then full-text; grep -ril &quot;term&quot; for the win
+Backup:    two copies, one of them somewhere else
+Upkeep:    weekly 10 min (capture + rename); yearly 30 min (zip + backup)
+</code></pre>
+<h2>THE TROUBLESHOOTING MANTRA</h2>
+<pre><code class="language-text">Gibberish?     → language setting, contrast, or not-text-at-all / swap tools
+Wrong order?   → columns. Crop per column; or AI-vision table prompt
+Missing lines? → reshoot: flatter, better light, whole block
+Numbers wrong? → verify against image; retype the ones that matter
+AI showed off? → &quot;Output ONLY the transcription&quot;: re-send faithful prompt
+Stuck?         → fresh chat + reshot photo + smaller crop: the 5-min reset
+</code></pre>
+<h2>THE PIPELINE (one line, commit to memory)</h2>
+<pre><code class="language-text">Paper → flat/side-lit photo → OCR (right tool for the input) →
+AI cleanup (faithful prompt) → 8-line check → good filename + 4-line header
+→ one Scans root → search finds it forever → two copies, one elsewhere
+</code></pre>
+<hr />
+<p>That&rsquo;s the whole handbook in one page. If this guide helped, the natural
+next steps are the companion guides: the <em>PDF Everyday Handbook</em> (working
+with PDFs day-to-day), the <em>Photo Digitizing Guide</em> (archival photos), and
+the <em>Paperwork Organizer</em> (the life-admin filing system that these scanned
+files can plug into).</p>
+<p><em>Asdale Dynamics, LLC — plain-English AI education, like a friend would
+explain it. Education only; not tax, legal, or medical advice.</em></p>
+  </div>
+  <div class="pager">
+      <a href="troubleshooting.html">&larr; Previous</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>

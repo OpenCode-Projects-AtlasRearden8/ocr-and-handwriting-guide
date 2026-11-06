@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 2: Free OCR Tools &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html">Scanning Tips</a>
+      <a href="tools.html" class="active">Free OCR Tools</a>
+      <a href="ai-cleanup.html">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html">Handwriting</a>
+      <a href="fixing-errors.html">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+      <a href="cheat-sheet.html">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 2 of 9</p>
+  <div class="doc"><h1>Chapter 2: The Best Free OCR Tools (and When to Use Each)</h1>
+<p>You don&rsquo;t need to buy anything. Between your phone, a browser tab, and one
+small free program you can install in five minutes, you have access to OCR
+that&rsquo;s better than what businesses paid real money for fifteen years ago.</p>
+<p>This chapter is a field guide: what each tool is good at, where it runs, and
+how to use it in under a minute.</p>
+<h2>The big picture: two kinds of OCR</h2>
+<p><strong>On-device OCR</strong> — the recognition happens inside your phone or computer.
+Nothing is uploaded. Fast, private, great for sensitive paper.</p>
+<p><strong>Cloud OCR</strong> — your image is sent to a server (often a big AI model) that
+reads it and returns text. Often more accurate on hard text, but your document
+leaves your device. Fine for restaurant menus and magazine pages; think twice
+for anything with account numbers or personal identifiers.</p>
+<p>You&rsquo;ll use both. The skill is knowing which situation calls for which.</p>
+<h2>The tools, ranked by situation</h2>
+<h3>Situation 1: &ldquo;I need text out of this, right now, in my hand&rdquo;</h3>
+<p><strong>Google Lens</strong> (Android: built into the camera or the Google app; iPhone:
+inside the Google app) — point at any visible text, tap <em>Search</em> or the text
+frame, then <em>Copy text</em> or <em>Copy to computer</em> (that last one sends the text to
+any nearby Chrome browser — genuinely wonderful). Fast, usually on-device,
+free.</p>
+<p><strong>iPhone Live Text</strong> — built into iOS. Open any photo with text, press and
+hold the text, it lifts right off. Works on signs, pages, receipts. On-device,
+free, zero setup. This solves <em>most</em> people&rsquo;s <em>most</em> OCR needs all by itself.</p>
+<p><strong>When to use:</strong> restaurant menus, posters, a paragraph from a book, wifi
+passwords on a router label, quick line-of-text grabs.</p>
+<h3>Situation 2: &ldquo;I have a photo/screenshot on my computer&rdquo;</h3>
+<ul>
+<li><strong>Windows:</strong> press <code>Win + Shift + T</code> (Snipping Tool text extraction) —
+  after snipping, the toolbar offers <em>Text actions</em> to copy all text. Also,
+  <strong>PowerToys Text Extractor</strong> (<code>Win + Shift + T</code> when PowerToys is installed)
+  grabs text from anywhere on screen. Both are free and on-device.</li>
+<li><strong>Mac:</strong> macOS has Live Text system-wide — just select/copy text inside any
+  image in Preview or Quick Look.</li>
+<li><strong>Any platform:</strong> open the image in <strong>Google Docs</strong> (Drive → upload → right
+  click → <em>Open with Google Docs</em>) and the OCR text appears above the image.
+  Cloud-based, needs a Google account, handles whole multi-page documents
+  beautifully.</li>
+</ul>
+<p><strong>When to use:</strong> screenshots, downloaded images, PDFs-that-are-actually-pictures.</p>
+<h3>Situation 3: &ldquo;I have a whole stack of photos/documents&rdquo;</h3>
+<p><strong>Google Drive&rsquo;s Scan + Google Docs OCR</strong> is the stack king: upload a batch to
+Drive, select all, <em>Open with → Google Docs</em>, and you get one doc per image
+with the text extracted. Cloud-based, but Google&rsquo;s OCR is free and very good.</p>
+<p><strong>OneNote&rsquo;s &ldquo;Copy text from picture&rdquo;</strong> (free with a Microsoft account):
+insert the image into a note, right-click the picture, <em>Copy Text from
+Picture</em>, paste anywhere. Cloud-assisted, handles messy real-world paper
+well.</p>
+<p><strong>When to use:</strong> digitizing a folder of notes, class handouts, clippings.</p>
+<h3>Situation 4: &ldquo;I want OCR that never touches the internet&rdquo;</h3>
+<p><strong>Tesseract</strong> — the classic open-source OCR engine. It&rsquo;s a command-line tool
+(AIcomplete: you type a command, it outputs a text file), and it&rsquo;s the engine
+inside a lot of commercial tools. Free forever, runs on Windows/Mac/Linux,
+100% on-device. Community tools like <strong>OCR4Linux-style wrappers</strong>, <strong>gImageReader</strong> (GUI front-end for Tesseract), or Linux&rsquo;s <strong>GNOME Sushi/doc properties</strong> integrations put friendly faces on it.</p>
+<p>One-line example once installed (Linux/macOS after <code>brew install tesseract</code> or
+<code>apt install tesseract-ocr</code>):</p>
+<pre><code class="language-text">tesseract receipt-01.jpg receipt-01-text
+</code></pre>
+<p>That drops <code>receipt-01-text.txt</code> next to the image. Done.</p>
+<p><strong>When to use:</strong> anything sensitive, big batch jobs you want to automate,
+older/no-internet computers, or if you just like owning your tools.</p>
+<h3>Situation 5: &ldquo;Just let the AI read it&rdquo;</h3>
+<p>Free AI chats — <strong>Gemini</strong>, <strong>Copilot</strong>, and <strong>ChatGPT</strong> all accept image
+uploads on their free tiers — will happily transcribe an image of text. This
+is technically AI vision, not classic OCR, and for modern printed text it&rsquo;s
+extremely good. It also <em>understands</em> the text, so it can format, summarize,
+or fix garble in the same breath (Chapter 3 is all about this).</p>
+<p><strong>When to use:</strong> messy layouts, forms with boxes and columns (where classic
+OCR shuffles order), pages in more than one language, and anything you&rsquo;ll
+clean up anyway.</p>
+<p><strong>Privacy note:</strong> this is cloud OCR (and then some) — treat free chat tiers&rsquo;
+uploads as &ldquo;leaving the building.&rdquo; Use it for ordinary paper, not for IDs or
+sensitive personal data.</p>
+<h2>The cheat table</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Where it runs</th>
+<th>Best for</th>
+<th>Cloud or local</th>
+<th>Skill level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone Live Text</td>
+<td>iOS Photos/anywhere</td>
+<td>Instant text from any image</td>
+<td>Local</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Google Lens</td>
+<td>Android/iPhone (Google app)</td>
+<td>Instant text, send-to-computer</td>
+<td>Mostly local</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Notes/Drive <em>Scan Documents</em></td>
+<td>Phone camera apps</td>
+<td>Multi-page tidy scans</td>
+<td>Cloud-assisted</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Snipping Tool / PowerToys Text Extractor (Win)</td>
+<td>Windows on screen</td>
+<td>Text in screenshots</td>
+<td>Local</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>macOS Live Text</td>
+<td>Mac system-wide</td>
+<td>Text in images on Mac</td>
+<td>Local</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Google Docs OCR</td>
+<td>Google Drive</td>
+<td>Whole documents, stacks</td>
+<td>Cloud</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>OneNote picture-to-text</td>
+<td>Windows/Mac/web</td>
+<td>Odd real-world paper</td>
+<td>Cloud-assisted</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>Free AI chat (Gemini/Copilot/ChatGPT)</td>
+<td>Browser/app</td>
+<td>Messy layouts, + cleanup/formatting</td>
+<td>Cloud</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td>Tesseract (+ GUI front-ends)</td>
+<td>Your computer</td>
+<td>Offline, batches, automation, privacy</td>
+<td>Local</td>
+<td>Moderate</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tool menus move around; if a button has wandered since we wrote this, the
+principle stands: find the tool&rsquo;s &ldquo;read text from image&rdquo; feature and feed it a
+good photo (Chapter 1).</em></p>
+<h2>Choosing without agonizing</h2>
+<p>If you&rsquo;re overwhelmed, here&rsquo;s the honest recommendation for most beginners:</p>
+<ol>
+<li><strong>Phone, everyday stuff:</strong> Live Text (iPhone) or Google Lens (Android).
+   Done. That&rsquo;s it.</li>
+<li><strong>Documents in batches or that you want to keep:</strong> <em>Scan Documents</em> into
+   Notes (iPhone) or Drive Scan (Android), then optionally Docs OCR for
+   extracted text.</li>
+<li><strong>Sensitive paper:</strong> on-device tools only (numbers 1–3, or Tesseract).</li>
+<li><strong>Hard layouts or handwriting:</strong> free AI chat, followed by the cleanup
+   workflow in Chapter 3.</li>
+</ol>
+<p>That&rsquo;s the whole decision tree.</p>
+<h2>Coming up</h2>
+<p>A raw OCR dump is usually readable but ragged — wrong line breaks, <code>0</code> for
+<code>O</code>, columns shuffled. Chapter 3 shows how a free AI assistant polishes that
+into genuinely clean text in about two minutes, using copy-paste prompts you
+can steal.</p>
+  </div>
+  <div class="pager">
+      <a href="scanning.html">&larr; Previous</a>
+      <a href="ai-cleanup.html">Next &rarr;</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>

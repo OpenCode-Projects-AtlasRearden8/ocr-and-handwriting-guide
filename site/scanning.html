@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 1: Scanning Tips &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html" class="active">Scanning Tips</a>
+      <a href="tools.html">Free OCR Tools</a>
+      <a href="ai-cleanup.html">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html">Handwriting</a>
+      <a href="fixing-errors.html">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+      <a href="cheat-sheet.html">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 1 of 9</p>
+  <div class="doc"><h1>Chapter 1: Scan Like a Pro (It&rsquo;s All About Angle and Light)</h1>
+<p>Here&rsquo;s the secret nobody tells beginners: <strong>the quality of your OCR is 80%
+decided before any software ever gets involved.</strong> The five seconds you spend
+setting up the shot save you five minutes of cleanup later. This chapter
+teaches you to take photos that computers can read perfectly on the first
+try.</p>
+<h2>The three enemies of OCR</h2>
+<p>OCR fails for exactly three reasons, and every tip below exists to defeat one
+of them:</p>
+<ol>
+<li><strong>Perspective skew</strong> — you shot the page from an angle, so rectangular
+   text looks like a trapezoid. Letters get stretched and the OCR engine
+   guesses wrong.</li>
+<li><strong>Uneven light</strong> — a shadow from your hand, a glare hotspot from a lamp,
+   or one bright edge and one dim edge. The engine confuses dark shadows with
+   dark ink.</li>
+<li><strong>Blur</strong> — camera moved, page moved, or focus locked onto the wrong thing.</li>
+</ol>
+<p>Fix those three and even mediocre OCR software performs well. Ignore them and
+even the best AI will output gibberish.</p>
+<h2>The 10-second setup that never fails</h2>
+<p><strong>Angle: shoot straight down, dead-on.</strong></p>
+<ul>
+<li>Hold the phone <strong>parallel to the paper</strong>, like you&rsquo;re photographing the
+  paper&rsquo;s face, not its horizon. Aim for the camera lens being directly above
+  the center of the page.</li>
+<li>When in doubt, get the paper <strong>flat</strong> — lay it on a table, not held up in
+  your hand. Curved pages (book spines, crumpled receipts) are where OCR goes
+  to die.</li>
+<li>If you must photograph a page in a binder or book, press it flat and accept
+  that the curve near the spine will be the weakest part. Photograph the page
+  closest to flat.</li>
+</ul>
+<p><strong>Light: window daylight from the side.</strong></p>
+<ul>
+<li>Daylight from a window is the best free light source on Earth. Position the
+  paper so the window is <em>to the side</em> of it, not behind you and not behind
+  the paper (that causes glare straight into the lens or shadows from the
+  phone itself).</li>
+<li><strong>No flash.</strong> Your phone&rsquo;s flash will bounce off glossy paper, thermal
+  receipt paper, and plastic sleeves, creating a white hotspot that erases
+  text. If the room is dim, take the paper to the window instead.</li>
+<li>Watch for your own shadow. Phone held up = phone shadow on the page. If you
+  see it, shift the paper, not your grip.</li>
+</ul>
+<p><strong>Steadiness: two tricks.</strong></p>
+<ul>
+<li>Rest your elbows or the edge of your hands on the table while shooting.</li>
+<li>Tap the screen on a piece of <em>text</em> to lock focus and exposure — most phone
+  cameras will then sharpen on that text and stop hunting around.</li>
+</ul>
+<h2>The pre-shot checklist</h2>
+<p>Make this muscle memory (it takes three seconds once you&rsquo;ve done it a few
+times):</p>
+<pre><code class="language-text">[ ] Paper is flat on a surface
+[ ] Phone is directly above, parallel to the paper
+[ ] Whole page is in the frame, with a sliver of margin around it
+[ ] Window or room light is beside the setup, light falling evenly
+[ ] No shadows of hands or phone on the page
+[ ] Tapped to focus on the text, then exhaled and tapped the shutter
+</code></pre>
+<h2>Special cases (paper that doesn&rsquo;t cooperate)</h2>
+<h3>Long, curled thermal receipts</h3>
+<p>Receipts are the classic villain: printed on curly paper with fading ink. The
+fix:</p>
+<ol>
+<li><strong>Uncurl before shooting.</strong> Roll the receipt the <em>opposite</em> direction of
+   its curl for a few seconds, or lay it under a heavy book for a minute.</li>
+<li>Tape or hold the ends with fingers <em>outside the frame</em>.</li>
+<li>Shoot straight down. If the receipt is too long for one frame, cut the
+   photo into two overlapping halves (overlap by a full line of text so
+   nothing lands in the gap) and OCR each half separately.</li>
+</ol>
+<p>If a receipt&rsquo;s ink has faded to ghost-gray, try photographing it with
+<strong>contrast boosted</strong> in your camera app (drag the exposure slider <em>down</em> — it
+sounds backwards, but darkening faintly printed thermal paper often makes the
+text pops). If that fails, see Chapter 8&rsquo;s &ldquo;faded ink&rdquo; section.</p>
+<h3>Book pages and bound documents</h3>
+<p>The curve near the spine kills OCR accuracy. Press the book as flat as it
+will gladly go — <em>never crank a bound book flat enough to damage the spine</em> —
+and accept lower accuracy there. OCR the flatter 80% and retype the few words
+near the spine by hand if you need them.</p>
+<h3>Wrinkled, folded, or sticky-note paper</h3>
+<p>Flatten what you can. A very slightly wrinkled page photographs fine if light
+is even (shadows in wrinkles are the actual problem, not the wrinkles). For
+sticky notes, peel carefully and flatten on the table. Tiny notes benefit
+from getting <em>closer</em> — fill the frame with the note.</p>
+<h3>Whiteboards and chalkboards</h3>
+<p>These photograph great if you do two things: turn off any lights that cause
+glare streaks on the glossy surface, and use your camera&rsquo;s HDR mode if it has
+one. Marker text on a flat whiteboard is some of the easiest OCR out there.</p>
+<h2>Should I use the phone&rsquo;s built-in scanner instead of a plain photo?</h2>
+<p>Modern phones have genuinely excellent built-in document modes — they
+automatically find the page edges, correct the perspective, boost contrast,
+and de-shadow. Use them whenever available:</p>
+<ul>
+<li><strong>iPhone:</strong> the Notes app → new note → camera icon → <em>Scan Documents</em>. It
+  produces a cleaned, flattened, black-and-white-ready scan, and the text in
+  it is already searchable (you can copy it). Long-press the scan to copy its
+  text.</li>
+<li><strong>Android:</strong> the Google Drive app → <strong>+</strong> → <em>Scan</em>, or the Google Lens
+  camera mode (point at text, tap <em>Copy text</em>). Pixel phones also have this
+  right inside the Camera app&rsquo;s <em>Document</em> mode.</li>
+</ul>
+<p>These built-in modes handle flattening and contrast <em>for</em> you, which is the
+same advice as above, automated. A plain photo works too — the built-in
+scanner just skips half your cleanup.</p>
+<p><strong>One caution:</strong> the <em>Scan Documents</em> tools sometimes ship pages off to cloud
+services (that&rsquo;s how they do their magic). For anything sensitive —IDs,
+medical paperwork, bank statements — prefer plain, in-app photos you keep
+local, or use OCR that runs on-device (Chapter 2&rsquo;s table marks which tools
+process where). You&rsquo;re in charge of where your paper&rsquo;s data travels.</p>
+<h2>A word about resolution</h2>
+<p>You don&rsquo;t need to obsess, but two quick rules:</p>
+<ul>
+<li><strong>Small text = more pixels.</strong> Fill the frame with the document. If the
+  paper is a full page, shoot it full-frame; don&rsquo;t stand back and photograph
+  the whole desk.</li>
+<li><strong>Jpg/heic from your phone is plenty.</strong> Don&rsquo;t bother with special
+  &ldquo;document&rdquo; apps promising 1200 dpi scans; your phone&rsquo;s normal camera at
+  normal settings beats most flatbed scanners for OCR purposes.</li>
+</ul>
+<h2>Quick recap</h2>
+<ol>
+<li>Flat paper, phone directly above, parallel.</li>
+<li>Window light from the side, no flash, no shadows.</li>
+<li>Tap to focus on the text, steady hands, shoot.</li>
+<li>Prefer built-in scanner modes for everyday paper; go plain and local for
+   sensitive stuff.</li>
+<li>Uncurl receipts, press books <em>gently</em>, fill the frame.</li>
+</ol>
+<p>You&rsquo;re now producing scans a computer can read on the first try. Next
+chapter: which free OCR tool to actually feed them to.</p>
+  </div>
+  <div class="pager">
+      <span></span>
+      <a href="tools.html">Next &rarr;</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>

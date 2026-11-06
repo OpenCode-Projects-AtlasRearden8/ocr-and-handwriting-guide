@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Turn paper, receipts, and handwritten notes into clean, searchable text with free OCR and AI. A beginner guide by Asdale Dynamics, LLC.">
+<title>Chapter 3: AI Cleanup &mdash; OCR &amp; Handwriting Guide</title>
+<style>
+:root {
+  --paper: #fbf7f0;
+  --ink: #33302a;
+  --soft: #6b6455;
+  --accent: #b3562d;
+  --accent-dark: #8a3f1e;
+  --card: #ffffff;
+  --line: #e7dfd2;
+  --code-bg: #f3ede2;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  line-height: 1.7;
+  font-size: 18px;
+}
+code, pre, kbd { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 0.82em; }
+header.site {
+  background: #2e2a24;
+  color: #f4efe6;
+  padding: 0.6rem 1rem;
+}
+header.site .inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem;
+}
+header.site .brand {
+  font-weight: bold; letter-spacing: 0.03em; text-decoration: none;
+  color: #f4b267; font-size: 0.95rem;
+}
+header.site nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+header.site nav a {
+  color: #e8e1d3; text-decoration: none; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+header.site nav a:hover { color: #f4b267; }
+main.page {
+  max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem 3rem;
+}
+.kicker {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--accent); font-size: 0.78rem; margin-bottom: 0.4rem;
+}
+h1 { font-size: 2.1rem; line-height: 1.25; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin-top: 2.4em; color: var(--accent-dark); }
+h3 { font-size: 1.15rem; margin-top: 1.8em; }
+p { margin: 1em 0; }
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
+blockquote {
+  margin: 1.4em 0; padding: 0.4em 1.2em;
+  border-left: 4px solid var(--accent); background: var(--card);
+  border-radius: 0 8px 8px 0; color: var(--soft);
+}
+code {
+  background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px;
+}
+pre {
+  background: #2e2a24; color: #f1ebdd; padding: 1rem 1.2rem;
+  border-radius: 10px; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: transparent; color: inherit; padding: 0; font-size: 0.85rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.4em 0; font-size: 0.92rem; }
+th, td { border: 1px solid var(--line); padding: 0.5em 0.7em; text-align: left; }
+th { background: var(--code-bg); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+.pager {
+  display: flex; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+  font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.9rem;
+}
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: underline; }
+footer.site {
+  background: #2e2a24; color: #b8afa0; text-align: center;
+  padding: 1.6rem 1rem; font-size: 0.85rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+footer.site a { color: #f4b267; }
+.hero {
+  background: linear-gradient(160deg, #fdf3e4, var(--paper));
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 2.2rem 2rem; margin-bottom: 2.4rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero p.tagline { color: var(--soft); font-size: 1.12rem; }
+.toc { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.toc li { margin: 0.45em 0; padding-left: 0; }
+.toc a {
+  text-decoration: none; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem; display: inline-block; padding: 0.25em 0;
+}
+.toc .n {
+  display: inline-block; min-width: 2.2em; color: var(--accent);
+  font-weight: bold;
+}
+.toc a:hover .t { text-decoration: underline; }
+.note {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1rem 1.3rem; margin: 1.4em 0; font-size: 0.95rem;
+}
+</style>
+</head>
+<body>
+
+  <header class="site">
+    <div class="inner">
+      <a class="brand" href="index.html">OCR &amp; Handwriting Guide</a>
+      <nav>
+        <a href="index.html">Start Here</a>
+      <a href="scanning.html">Scanning Tips</a>
+      <a href="tools.html">Free OCR Tools</a>
+      <a href="ai-cleanup.html" class="active">AI Cleanup</a>
+      <a href="receipts.html">Receipts</a>
+      <a href="handwriting.html">Handwriting</a>
+      <a href="fixing-errors.html">Fixing Errors</a>
+      <a href="filing.html">Filing</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+      <a href="cheat-sheet.html">Cheat Sheet</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page">
+  <p class="kicker">Chapter 3 of 9</p>
+  <div class="doc"><h1>Chapter 3: Clean It Up with Free AI (Copy-Paste Prompts Inside)</h1>
+<p>OCR gives you a <em>draft</em>. It&rsquo;s usually 90–98% right, and the last 2–10% is
+exactly where the frustration lives: split words, shuffled columns, <code>rn</code>
+read as <code>m</code>, line breaks landing in terrible places.</p>
+<p>This chapter is the &ldquo;make it clean&rdquo; step. You&rsquo;ll use a <strong>free AI chat</strong>
+(Gemini, Copilot, or ChatGPT&rsquo;s free tier — all fine) as your cleanup editor.
+The trick that makes this work is knowing what to <em>ask for</em>, so this chapter
+is mostly ready-to-steal prompts. Copy them, paste them, keep them.</p>
+<h2>The 2-minute cleanup workflow</h2>
+<pre><code class="language-text">1. Get your raw OCR text (Chapters 1–2)
+2. Paste it into the AI chat with a cleanup prompt (below)
+3. Read the result for 30 seconds, fix anything obvious
+4. Save it as a .txt or .md file with a good name (Chapter 7 covers naming)
+</code></pre>
+<p>That&rsquo;s the entire loop. Now, the prompts.</p>
+<h2>Prompt 1: The faithful cleanup (use this 90% of the time)</h2>
+<p><strong>Use when:</strong> you want the text cleaned but <em>not</em> changed. This is your
+default for notes, letters, printed pages you&rsquo;re archiving as text.</p>
+<pre><code class="language-text">Below is raw OCR output from a scanned document. Clean it up so it reads
+naturally, fixing obvious OCR errors: wrong characters, broken words,
+merged/split lines, and broken punctuation. DO NOT add, remove, reorder, or
+reword any content — the meaning must stay exactly as written. Keep original
+paragraph breaks. Preserve lists as lists. If anything is unreadable, mark it
+[illegible]. Output only the cleaned text.
+
+OCR TEXT:
+(paste here)
+</code></pre>
+<p><strong>Why each line matters:</strong>
+- <em>DO NOT add/remove/reorder</em> — without this, AI tends to &ldquo;helpfully&rdquo; expand
+  or summarize, which ruins a transcript.
+- <em>Mark unreadable as [illegible]</em> — an honest gap beats an invented word.
+- <em>Output only the cleaned text</em> — skips the chatty preamble you&rsquo;d have to
+  delete.</p>
+<p><strong>Verify your guardrails worked:</strong> skim the result against the original. If
+it changed more than character-level fixes, re-run with &ldquo;Be more conservative;
+do not restructure anything.&rdquo;</p>
+<h2>Prompt 2: Faithful cleanup + formatting (for messy layouts)</h2>
+<p><strong>Use when:</strong> the text is okay-ish but the <em>shape</em> is mangled — headings
+buried mid-paragraph, lists flattened, tables turned to soup.</p>
+<pre><code class="language-text">Here is raw OCR from a document. Clean the text exactly like a proofreader:
+fix OCR errors only; do not change, add, or reorder content. Additionally,
+format it in Markdown: use ## for obvious section headings (infer from text
+like ALL CAPS lines or numbered sections), convert list-like lines to bullet
+lists, and if the text clearly contains a table, rebuild it as a Markdown
+table using the original values only. Mark anything unreadable [illegible].
+
+OCR TEXT:
+(paste here)
+</code></pre>
+<p><strong>Extra line for tables specifically</strong> (when a real table got mangled):</p>
+<pre><code class="language-text">The following OCR is from a table. Reconstruct the table preserving every
+value. If a cell is unreadable, use [?]. Do not invent values. Column
+headers appear to be: (tell it what you can see).
+</code></pre>
+<h2>Prompt 3: Receipts → tidy data</h2>
+<p><strong>Use when:</strong> you have OCR&rsquo;d receipts and want a usable expense list. This
+one is a time-saver you&rsquo;ll use weekly. (Full receipts workflow in Chapter 4.)</p>
+<pre><code class="language-text">Below are OCR results from several receipts. For each receipt, extract:
+Date | Merchant | Items (brief) | Total | Tax | Payment method (if shown).
+Output as a single Markdown table, one row per receipt, plus a TOTAL row at
+the bottom summing the totals. Use 0.00 placeholder for unreadable numbers
+and note them. Do not guess or round.
+
+RECEIPT OCR:
+(paste here)
+</code></pre>
+<h2>Prompt 4: Handwriting transcription</h2>
+<p><strong>Use when:</strong> working with handwritten text (deep dive in Chapter 5).</p>
+<pre><code class="language-text">Transcribe the handwriting in this image. Keep the person's own spelling,
+punctuation, and line breaks as close as possible — do not &quot;correct&quot; them.
+If a word is truly unreadable, write [unreadable]. Do not summarize or
+reorganize. Output only the transcription.
+</code></pre>
+<p>The &ldquo;don&rsquo;t correct them&rdquo; line matters more than you&rsquo;d think: AI loves
+fixing spelling, but if this is <em>your</em> journal or a <em>grandparent&rsquo;s</em> letter,
+the spelling <em>is</em> the artifact.</p>
+<h2>Prompt 5: Summarize or index a long transcript</h2>
+<p><strong>Use when:</strong> the transcription is fine but too long to skim (meeting notes,
+a long letter, class lecture).</p>
+<pre><code class="language-text">Below is a cleaned transcription. Create: (1) a 5-bullet summary of the main
+points; (2) a list of any dates, names, or amounts mentioned; (3) three
+good search keywords someone might use to find this document later.
+
+TRANSCRIPT:
+(paste here)
+</code></pre>
+<p>That little keyword list becomes gold in Chapter 7 — it&rsquo;s your future search
+fuel.</p>
+<h2>Common cleanup mistakes (so you don&rsquo;t make them)</h2>
+<ol>
+<li><strong>Asking for cleanup <em>without</em> the &ldquo;do not change content&rdquo; line</strong>, then
+   getting a rewritten version you didn&rsquo;t want. Fix: always include the
+   faithful-language.</li>
+<li><strong>Uploading sensitive paper</strong> to a free chat. Fix: sensitive → on-device
+   OCR only, or AI on the <em>text</em> (not image) after stripping identifiers.</li>
+<li><strong>Trusting numbers.</strong> AI and OCR both misread digits exuberantly. If a
+   receipt says $18.75, glance at the image. Digits get a &ldquo;trust but
+   visually verify&rdquo; rule; words you can usually catch by ear when reading.</li>
+<li><strong>One prompt, no follow-up.</strong> If output is 80% there, just say: &ldquo;Same
+   rules, but keep original line breaks exactly.&rdquo; Iterating in the same chat
+   where it can see the previous attempt is the whole magic.</li>
+</ol>
+<h2>Which free AI chat should I use?</h2>
+<p>Any of them, truly. Free tiers of Gemini, Copilot, and ChatGPT all handle
+image + text happily. Practical differences for <em>this</em> work:</p>
+<ul>
+<li><strong>Gemini / Google ecosystem</strong> — plays nicest with Drive; if you already OCR
+  into Google Docs, staying in-family is smooth.</li>
+<li><strong>Copilot / Microsoft ecosystem</strong> — same story if you live in OneNote/Word.</li>
+<li><strong>ChatGPT free tier</strong> — strong handwriting readings in our experience, but
+  free-tier image limits change often.</li>
+</ul>
+<p>Browse on the day and use whichever isn&rsquo;t nagging you about a rate limit.
+None of this guide depends on a specific chat.</p>
+<h2>What AI is <em>bad</em> at (so you double-check)</h2>
+<ul>
+<li><strong>Exact numbers and dollar amounts</strong> — verify against the image.</li>
+<li><strong>Dates</strong> — <code>5/6</code> is May 6 or June 5 depending on country and context;
+  confirm from surrounding text.</li>
+<li><strong>Names</strong> — an unusual name (<code>Kaelberer</code>) can become generic (<code>Keller</code>);
+  verify names against the original.</li>
+<li><strong>Blank-filling</strong> — AI will sometimes &ldquo;read&rdquo; what plausibly <em>would</em> be
+  there. If a passage seems suspiciously fluent but the source was rough,
+  re-check that passage. The <code>[illegible]</code> instruction helps, but stay alert.</li>
+</ul>
+<hr />
+<p>You now own the full pipeline: photo → OCR → AI cleanup. Next, we put it to
+work on the most satisfying target: those shoeboxes of receipts.</p>
+  </div>
+  <div class="pager">
+      <a href="tools.html">&larr; Previous</a>
+      <a href="receipts.html">Next &rarr;</a>
+    </div>
+</main>
+<footer class="site">
+  <p>OCR &amp; Handwriting Guide — free, education only, not tax/legal/medical advice.<br>
+  Built with care by <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a>.
+  Companion guides: <a href="https://dylanasdale.github.io">dylanasdale.github.io</a></p>
+</footer>
+</body>
+</html>
